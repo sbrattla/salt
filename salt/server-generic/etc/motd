@@ -1,0 +1,8 @@
+.------------------------------------------------------------------------------
+Welcome to {{ grains['fqdn'] }}
+
+This server is managed using a configuration management system (saltstack.org).
+Changes made to this box directly will likely be over-written by SALT.
+
+Any configuration changes to this machine should go in the centralized
+configuration located on the SALT master.

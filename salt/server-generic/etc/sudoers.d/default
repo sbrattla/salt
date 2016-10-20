@@ -1,0 +1,3 @@
+# The administrator user may gain root privileges.
+administrator    ALL=(ALL:ALL) ALL
+
