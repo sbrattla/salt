@@ -1,4 +1,4 @@
 base:
   '*docker*':
     - server-generic
-    - server-host
+    - server-dockerhost

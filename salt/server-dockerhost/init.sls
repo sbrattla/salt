@@ -15,12 +15,13 @@ docker:
       - ca-certificates
       - docker-engine
   cmd.run:
-      - modprobe auf
+      - name: modprobe auf
       - unless: modinfo aufs > /dev/null 2>&1
   group.present:
     - gid: 999
     - members:
       - administrator
-  file.managed:
+  file.replace:
+    - name: /etc/default/docker
     - pattern: ^#DOCKER_OPTS.*$
     - repl: DOCKER_OPTS="--dns 8.8.8.8 -s aufs"
