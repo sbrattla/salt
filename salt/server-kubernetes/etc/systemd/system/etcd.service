@@ -4,7 +4,7 @@ Documentation=https://github.com/coreos/etcd
 [Service]
 Type=notify
 Environment=ETCD_DATA_DIR=/var/lib/etcd
-ExecStart=/opt/kubernetes/bin/etcd -name {{ pillar['name'] }} \
+ExecStart=/opt/kubernetes/etcd/etcd -name {{ pillar['name'] }} \
   -client-cert-auth -trusted-ca-file=/opt/kubernetes/certs/ca.pem \
   -cert-file=/opt/kubernetes/certs/client.pem \
   -key-file=/opt/kubernetes/certs/client-key.pem \
