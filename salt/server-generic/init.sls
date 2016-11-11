@@ -62,7 +62,7 @@ lsof:
   file.managed:
     - user: root
     - group: root
-    - mode: 0644
+    - mode: 0755
     - source: salt://server-generic/etc/timezone
   cmd.wait:
     - name: dpkg-reconfigure -f noninteractive tzdata
