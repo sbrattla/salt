@@ -1,0 +1,14 @@
+[Unit]
+Description=flanneld
+After=etcd.service
+[Install]
+WantedBy=multi-user.target
+[Service]
+ExecStart=/opt/kubernetes/bin/flanneld \
+ -public-ip={{ pillar['ip'] }} \
+ -ip-masq=true \
+ -etcd-endpoints={{ pillar['etcd-endpoints'] }} \
+ -etcd-prefix="gloriouscloud/network"
+Restart=always
+RestartSec=10s
+LimitNOFILE=65535

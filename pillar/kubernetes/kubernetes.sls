@@ -16,3 +16,5 @@ hosts:
 # advertise-client-urls: http://[IP]:2379
 # initial-advertise-peer-urls: http://[IP]:2380
 # initial-cluster: [name]=[node],[name]=[node]...
+# client-urls: [node],[node],[node]
+
