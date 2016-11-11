@@ -23,7 +23,7 @@ install-etcd:
     - name: /tmp/install-etcd
 
 /etc/systemd/system/etcd.service:
-  file.recurse:
+  file.managed:
     - user: root
     - group: root
     - source: salt://server-kubernetes/etc/systemd/system/etcd.service
