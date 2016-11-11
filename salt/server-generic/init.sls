@@ -112,13 +112,11 @@ administrator:
     - home: /home/administrator
 
 
-{% if pillar['hosts'] is defined %}
 {% for ip, hosts in pillar.get('hosts', {}).items() %}
-{{host}}:
+{{hosts}}:
   host.present:
     - ip: {{ip}}
     - names:
       - {{hosts}}
 {% endfor %}
-{% endif %}
 
