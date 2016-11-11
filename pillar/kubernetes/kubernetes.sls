@@ -5,9 +5,9 @@
 # server.
 #
 hosts:
-  10.131.36.35: alpha kubernetes-alpha
-  10.131.36.36: bravo kubernetes-bravo
-  10.131.7.153: charlie kubernetes-charlie
+  10.131.36.35: kubernetes-alpha
+  10.131.36.36: kubernetes-bravo
+  10.131.7.153: kubernetes-charlie
 
 #
 # Configure cluster configuration
