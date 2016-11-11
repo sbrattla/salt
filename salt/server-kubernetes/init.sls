@@ -7,7 +7,7 @@ install-prerequisites:
       - curl
 
 install-go-version-manager:
-  file.manage:
+  file.managed:
     - name: /tmp/install-go-version-manager
     - source: salt://server-kubernetes/tmp/install-go-version-manager
   cmd.run:
