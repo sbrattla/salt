@@ -50,6 +50,14 @@ lsof:
       - lsof
 
 # Configure timezone
+/usr/local/bin/updateconfig:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 0644
+    - source: salt://server-generic/usr/local/bin/updateconfig
+
+# Configure timezone
 /etc/timezone:
   file.managed:
     - user: root

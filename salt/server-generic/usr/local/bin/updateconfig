@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /var/local/salt && git pull
+salt-call --local state.highstate
