@@ -19,6 +19,6 @@ install-etcd:
     - mode: 0544
     - name: /tmp/install-etcd
     - source: salt://server-kubernetes/tmp/install-etcd
-    - cwd: /opt/kubernetes
   cmd.run:
+    - cwd: /opt/kubernetes
     - name: /tmp/install-etcd
