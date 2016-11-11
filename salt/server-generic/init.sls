@@ -110,3 +110,12 @@ administrator:
     - password: $1$K1AdZDQi$B2TdOmQJ3SGpe2uGEQskX1
     - shell: /bin/bash
     - home: /home/administrator
+
+{% for ip, hosts in pillar.get('hosts', {}).items() %}
+{{host}}:
+  host.present:
+    - ip: {{ip}}
+    - names:
+      - {{hosts}}
+{% endfor %}
+
