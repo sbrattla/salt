@@ -6,13 +6,14 @@ install-prerequisites:
       - git
       - curl
 
-install-go-version-manager:
+install-gvm:
   file.managed:
     - mode: 0544
-    - name: /tmp/install-go-version-manager
-    - source: salt://server-kubernetes/tmp/install-go-version-manager
+    - name: /tmp/install-gvm
+    - source: salt://server-kubernetes/tmp/install-gvm
   cmd.run:
-    - name: /tmp/install-go-version-manager
+    - name: /tmp/install-gvm
+    - onlyif: [ ! -f /opt/kubernetes/gvm.installed ] && echo 1
 
 install-etcd:
   file.managed:
@@ -21,6 +22,7 @@ install-etcd:
     - source: salt://server-kubernetes/tmp/install-etcd
   cmd.run:
     - name: /tmp/install-etcd
+    - onlyif: [ ! -f /opt/kubernetes/etcd.installed ] && echo 1
 
 /etc/systemd/system/etcd.service:
   file.managed:
@@ -37,6 +39,7 @@ install-flannel:
     - source: salt://server-kubernetes/tmp/install-flannel
   cmd.run:
     - name: /tmp/install-flannel
+    - onlyif: [ -f /opt/kubernetes/flannel.installed ] && echo 1
 
 /etc/systemd/system/flannel.service:
   file.managed:

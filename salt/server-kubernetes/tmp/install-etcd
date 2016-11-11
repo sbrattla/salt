@@ -2,3 +2,4 @@ mkdir -p /opt/kubernetes/etcd
 cd /opt/kubernetes/etcd
 curl -L https://github.com/coreos/etcd/releases/download/v3.0.13/etcd-v3.0.13-linux-amd64.tar.gz -o etcd-v3.0.13-linux-amd64.tar.gz
 tar xzvf etcd-v3.0.13-linux-amd64.tar.gz --strip-components=1
+date +%s > /opt/kubernetes/etcd.installed
