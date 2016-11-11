@@ -1,5 +1,5 @@
 base:
   '*kubernetes*':
     - server-generic
-    - server-dockerhost
-    - server-kuberneteshost
+    - server-docker
+    - server-kubernetes
