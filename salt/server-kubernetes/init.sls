@@ -20,5 +20,4 @@ install-etcd:
     - name: /tmp/install-etcd
     - source: salt://server-kubernetes/tmp/install-etcd
   cmd.run:
-    - cwd: /opt/kubernetes
     - name: /tmp/install-etcd
