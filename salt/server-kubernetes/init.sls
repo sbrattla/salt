@@ -26,7 +26,7 @@ install-etcd:
   file.recurse:
     - user: root
     - group: root
-    - source: salt://etc/systemd/system/etcd.service
+    - source: salt://server-kubernetes/etc/systemd/system/etcd.service
     - template: jinja
     - clean: True
 
