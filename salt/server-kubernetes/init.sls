@@ -13,7 +13,7 @@ install-gvm:
     - source: salt://server-kubernetes/tmp/install-gvm
   cmd.run:
     - name: /tmp/install-gvm
-    - onlyif: test -f /opt/kubernetes/gvm.installed
+    - unless: test -f /opt/kubernetes/gvm.installed
 
 install-etcd:
   file.managed:
@@ -22,7 +22,7 @@ install-etcd:
     - source: salt://server-kubernetes/tmp/install-etcd
   cmd.run:
     - name: /tmp/install-etcd
-    - onlyif: test -f /opt/kubernetes/etcd.installed
+    - unless: test -f /opt/kubernetes/etcd.installed
 
 /etc/systemd/system/etcd.service:
   file.managed:
@@ -39,7 +39,7 @@ install-flannel:
     - source: salt://server-kubernetes/tmp/install-flannel
   cmd.run:
     - name: /tmp/install-flannel
-    - onlyif: test -f /opt/kubernetes/flannel.installed
+    - unless: test -f /opt/kubernetes/flannel.installed
 
 /etc/systemd/system/flannel.service:
   file.managed:
