@@ -113,7 +113,7 @@ administrator:
 
 
 {% for ip, hosts in pillar.get('hosts', {}).items() %}
-{{hosts}}:
+{{ip}}:
   host.present:
     - ip: {{ip}}
     - names:
