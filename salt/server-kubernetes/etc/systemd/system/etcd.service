@@ -1,0 +1,25 @@
+[Unit]
+Description=etcd key-value store
+Documentation=https://github.com/coreos/etcd
+[Service]
+Type=notify
+Environment=ETCD_DATA_DIR=/var/lib/etcd
+ExecStart=/opt/kubernetes/bin/etcd -name {{ pillar['name'] }} \
+  -client-cert-auth -trusted-ca-file=/opt/kubernetes/certs/ca.pem \
+  -cert-file=/opt/kubernetes/certs/client.pem \
+  -key-file=/opt/kubernetes/certs/client-key.pem \
+  -peer-client-cert-auth -peer-trusted-ca-file=/opt/kubernetes/certs/ca.pem \
+  -peer-cert-file=/opt/kubernetes/certs/client.pem \
+  -peer-key-file=/opt/kubernetes/certs/client-key.pem \
+  -advertise-client-urls={{ pillar['advertise-client-urls'] }} \
+  -listen-client-urls=https://0.0.0.0:2379 \
+  -listen-peer-urls=https://0.0.0.0:2380 \
+  -initial-advertise-peer-urls={{ pillar['advertise-peer-urls'] }} \
+  -initial-cluster={{ pillar['initial-cluster'] }} \
+  -initial-cluster-state=new \
+  -initial-cluster-token=catsonthemoon
+Restart=always
+RestartSec=10s
+LimitNOFILE=65535
+[Install]
+WantedBy=multi-user.target

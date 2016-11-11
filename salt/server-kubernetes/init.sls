@@ -21,3 +21,13 @@ install-etcd:
     - source: salt://server-kubernetes/tmp/install-etcd
   cmd.run:
     - name: /tmp/install-etcd
+
+/etc/systemd/system/etcd.service:
+  file.recurse:
+    - user: root
+    - group: root
+    - source: salt://etc/systemd/system/etcd.service
+    - template: jinja
+    - clean: True
+
+
