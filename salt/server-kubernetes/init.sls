@@ -1,7 +1,7 @@
 install-prerequisites:
   pkg.installed:
     - pkgs:
-      - build-essentials
+      - build-essential
       - bison
       - git
       - curl
