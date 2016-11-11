@@ -4,7 +4,8 @@ Requires=flannel.service
 After=flannel.service
 [Service]
 EnvironmentFile=/run/flannel/subnet.env
-ExecStart=/usr/bin/docker daemon --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} -s overlay
+#ExecStart=/usr/bin/docker daemon --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} -s overlay
+ExecStart=/usr/bin/docker daemon --bip=${FLANNEL_SUBNET} -s overlay
 Restart=on-failure
 RestartSec=5
 LimitNOFILE=1048576
