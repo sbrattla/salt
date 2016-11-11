@@ -54,7 +54,7 @@ lsof:
   file.managed:
     - user: root
     - group: root
-    - mode: 0644
+    - mode: 0755
     - source: salt://server-generic/usr/local/bin/updateconfig
 
 # Configure timezone
