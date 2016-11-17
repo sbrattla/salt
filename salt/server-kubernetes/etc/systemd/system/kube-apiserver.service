@@ -1,0 +1,24 @@
+[Unit]
+Description=Kubernetes API Server
+Documentation=http://kubernetes.io/docs/admin/kube-apiserver/
+After=network.target
+After=etcd.service
+[Service]
+ExecStart=/opt/kubernetes/bin/kube-apiserver \
+  --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota \
+  --bind-address=0.0.0.0 \
+  --secure-port=8443 \
+  --insecure-bind-address=127.0.0.1 \
+  --insecure-port=8080 \
+  --etcd-servers={{pillar['etcd-endpoints']}} \
+  --token-auth-file=/opt/kubernetes/tokens.csv \
+  --basic-auth-file=/opt/kubernetes/users.csv \
+  --allow-privileged=true \
+  --apiserver-count=1 \
+  --service-cluster-ip-range=172.16.0.0/24 \
+  --enable-swagger-ui=true \
+  --v=2
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

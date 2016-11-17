@@ -1,0 +1,15 @@
+{ 
+ "CN": "client", 
+ "hosts": [
+   "kubernetes-alpha",
+   "kubernetes-bravo",
+   "kubernetes-charlie",
+   "10.131.36.35",
+   "10.131.36.36",
+   "10.131.7.153",
+ ], 
+ "key": { 
+   "algo": "rsa", 
+   "size": 2048
+ }
+}

@@ -15,6 +15,13 @@ install-prerequisites:
     - dir_mode: 0755
     - source: salt://server-kubernetes/opt
     - include_empty: True
+  file.managed:
+    - mode: 0544
+    - name: /tmp/configure-certs
+    - source: salt://server-kubernetes/tmp/configure-certs
+  cmd.run:
+    - name: /tmp/configure-certs
+    - unless: test -f /opt/certs/ca.csr
 
 #
 # gvm
