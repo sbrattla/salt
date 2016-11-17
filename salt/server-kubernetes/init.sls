@@ -112,7 +112,7 @@ install-kubernetes:
     - name: /tmp/install-kubernetes
     - unless: test -f /opt/kubernetes/kubernetes.installed  
 
-configure-kube-controller-manager
+configure-kube-controller-manager:
   file.managed:
     - name: /etc/systemd/system/kube-controller-manager.service
     - user: root
