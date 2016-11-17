@@ -2,6 +2,11 @@
 # Software
 #
 
+fail2ban:
+  pkg.installed:
+    - pkgs:
+      - fail2ban
+
 software-properties-common:
   pkg.installed:
     - pkgs:
