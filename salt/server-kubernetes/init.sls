@@ -106,7 +106,7 @@ configure-docker:
 install-kubernetes:
   file.managed:
     - mode: 0544
-    - name: /tmp/install-flannel
+    - name: /tmp/install-kubernetes
     - source: salt://server-kubernetes/tmp/install-kubernetes
   cmd.run:
     - name: /tmp/install-kubernetes
