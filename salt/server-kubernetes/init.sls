@@ -8,7 +8,9 @@ install-prerequisites:
       - git
       - curl
 
-# Install 'Go Version Manager'
+#
+# gvm
+#
 install-gvm:
   file.managed:
     - mode: 0544
@@ -18,7 +20,9 @@ install-gvm:
     - name: /tmp/install-gvm
     - unless: test -f /opt/kubernetes/gvm.installed
 
-# Install 'etcd'
+# 
+# etcd
+#
 install-etcd:
   file.managed:
     - mode: 0544
@@ -27,7 +31,9 @@ install-etcd:
   cmd.run:
     - name: /tmp/install-etcd
     - unless: test -f /opt/etcd/etcd.installed
-  file.managed
+
+configure-etcd:
+  file.managed:
     - name: /etc/systemd/system/etcd.service
     - user: root
     - group: root
@@ -35,7 +41,9 @@ install-etcd:
     - template: jinja
     - clean: True
 
-# Install 'flannel'
+#
+# flannel
+#
 install-flannel:
   file.managed:
     - mode: 0544
@@ -44,6 +52,8 @@ install-flannel:
   cmd.run:
     - name: /tmp/install-flannel
     - unless: test -f /opt/kubernetes/flannel.installed
+
+configure-flannel:
   file.managed:
     - name: /etc/systemd/system/flannel.service
     - user: root
@@ -52,7 +62,9 @@ install-flannel:
     - template: jinja
     - clean: True
 
-# Install 'docker'
+#
+# docker
+#
 install-docker:
   pkgrepo.managed:
     - humanname: Docker Engine Repository
@@ -78,6 +90,8 @@ install-docker:
     - name: /etc/default/docker
     - pattern: ^#DOCKER_OPTS.*$
     - repl: DOCKER_OPTS="--dns 8.8.8.8 -s aufs"
+
+configure-docker:
   file.managed:
     - name: /etc/systemd/system/docker.service
     - user: root
@@ -86,7 +100,9 @@ install-docker:
     - template: jinja
     - clean: True
 
-# Install 'kubernetes'
+#
+# kubernetes
+#
 install-kubernetes:
   file.managed:
     - mode: 0544
@@ -95,3 +111,12 @@ install-kubernetes:
   cmd.run:
     - name: /tmp/install-kubernetes
     - unless: test -f /opt/kubernetes/kubernetes.installed  
+
+configure-kube-controller-manager
+  file.managed:
+    - name: /etc/systemd/system/kube-controller-manager.service
+    - user: root
+    - group: root
+    - source: salt://server-kubernetes/etc/systemd/system/kube-controller-manager.service
+    - template: jinja
+    - clean: True
