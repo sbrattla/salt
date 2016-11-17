@@ -23,7 +23,7 @@ prepare-installers:
     - name: /tmp
     - user: root
     - group: root
-    - file_mode: 0644
+    - file_mode: 0754
     - dir_mode: 0755
     - source: salt://server-kubernetes/tmp
     - include_empty: True
