@@ -83,6 +83,7 @@ install-docker:
       - name: modprobe auf
       - unless: modinfo aufs > /dev/null 2>&1
   group.present:
+    - name: docker
     - gid: 999
     - members:
       - administrator
