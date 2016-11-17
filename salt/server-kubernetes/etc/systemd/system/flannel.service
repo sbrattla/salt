@@ -4,8 +4,8 @@ After=etcd.service
 [Install]
 WantedBy=multi-user.target
 [Service]
-ExecStart=/opt/kubernetes/flannel/flanneld \
- -public-ip={{ pillar['ip'] }} \
+ExecStart=/usr/local/bin/flanneld \
+ -public-ip={{pillar['ip']}} \
  -iface=eth1 \
  -ip-masq=true \
  -etcd-endpoints="{{ pillar['etcd-endpoints'] }}" \

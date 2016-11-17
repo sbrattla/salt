@@ -12,9 +12,7 @@ hosts:
 #
 # Configure cluster configuration
 # 
-# name: [name]
-# advertise-client-urls: http://[IP]:2379
-# initial-advertise-peer-urls: http://[IP]:2380
+# ip: [ip]
+# hostname: [hostname]
 # initial-cluster: [name]=[node],[name]=[node]...
 # client-urls: [node],[node],[node]
-

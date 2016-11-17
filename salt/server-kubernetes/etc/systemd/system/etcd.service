@@ -4,12 +4,12 @@ Documentation=https://github.com/coreos/etcd
 [Service]
 Type=notify
 Environment=ETCD_DATA_DIR=/var/lib/etcd
-ExecStart=/opt/kubernetes/etcd/etcd -name {{ pillar['name'] }} \
-  -advertise-client-urls={{ pillar['advertise-client-urls'] }} \
+ExecStart=/usr/local/bin/etcd -name {{pillar['hostname']}} \
+  -advertise-client-urls=http://{{pillar['hostname']}}:2379 \
   -listen-client-urls=http://0.0.0.0:2379 \
   -listen-peer-urls=http://0.0.0.0:2380 \
-  -initial-advertise-peer-urls={{ pillar['initial-advertise-peer-urls'] }} \
-  -initial-cluster={{ pillar['initial-cluster'] }} \
+  -initial-advertise-peer-urls=http://{{pillar['hostname']:2380}} \
+  -initial-cluster={{pillar['initial-cluster']}} \
   -initial-cluster-state=new \
   -initial-cluster-token=catsonthemoon
 Restart=always

@@ -1,3 +1,5 @@
+{% set kernelrelease = salt['grains.get']('kernelrelease') -%}
+
 install-prerequisites:
   pkg.installed:
     - pkgs:
@@ -6,6 +8,7 @@ install-prerequisites:
       - git
       - curl
 
+# Install 'Go Version Manager'
 install-gvm:
   file.managed:
     - mode: 0544
@@ -15,6 +18,7 @@ install-gvm:
     - name: /tmp/install-gvm
     - unless: test -f /opt/kubernetes/gvm.installed
 
+# Install 'etcd'
 install-etcd:
   file.managed:
     - mode: 0544
@@ -22,16 +26,16 @@ install-etcd:
     - source: salt://server-kubernetes/tmp/install-etcd
   cmd.run:
     - name: /tmp/install-etcd
-    - unless: test -f /opt/kubernetes/etcd.installed
-
-/etc/systemd/system/etcd.service:
-  file.managed:
+    - unless: test -f /opt/etcd/etcd.installed
+  file.managed
+    - name: /etc/systemd/system/etcd.service
     - user: root
     - group: root
     - source: salt://server-kubernetes/etc/systemd/system/etcd.service
     - template: jinja
     - clean: True
 
+# Install 'flannel'
 install-flannel:
   file.managed:
     - mode: 0544
@@ -40,18 +44,16 @@ install-flannel:
   cmd.run:
     - name: /tmp/install-flannel
     - unless: test -f /opt/kubernetes/flannel.installed
-
-/etc/systemd/system/flannel.service:
   file.managed:
+    - name: /etc/systemd/system/flannel.service
     - user: root
     - group: root
     - source: salt://server-kubernetes/etc/systemd/system/flannel.service
     - template: jinja
     - clean: True
 
-{% set kernelrelease = salt['grains.get']('kernelrelease') -%}
-
-docker:
+# Install 'docker'
+install-docker:
   pkgrepo.managed:
     - humanname: Docker Engine Repository
     - name: "deb https://apt.dockerproject.org/repo ubuntu-xenial main"
@@ -76,12 +78,20 @@ docker:
     - name: /etc/default/docker
     - pattern: ^#DOCKER_OPTS.*$
     - repl: DOCKER_OPTS="--dns 8.8.8.8 -s aufs"
-
-/etc/systemd/system/docker.service:
   file.managed:
+    - name: /etc/systemd/system/docker.service
     - user: root
     - group: root
     - source: salt://server-kubernetes/etc/systemd/system/docker.service
     - template: jinja
     - clean: True
-  
+
+# Install 'kubernetes'
+install-kubernetes:
+  file.managed:
+    - mode: 0544
+    - name: /tmp/install-flannel
+    - source: salt://server-kubernetes/tmp/install-kubernetes
+  cmd.run:
+    - name: /tmp/install-kubernetes
+    - unless: test -f /opt/kubernetes/kubernetes.installed  
