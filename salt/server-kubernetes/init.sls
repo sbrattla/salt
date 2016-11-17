@@ -7,6 +7,8 @@ install-prerequisites:
       - bison
       - git
       - curl
+
+prepare-home:
   file.recurse:
     - name: /opt
     - user: root
@@ -15,10 +17,20 @@ install-prerequisites:
     - dir_mode: 0755
     - source: salt://server-kubernetes/opt
     - include_empty: True
-  file.managed:
-    - mode: 0544
-    - name: /tmp/configure-certs
-    - source: salt://server-kubernetes/tmp/configure-certs
+
+prepare-installers:
+  file.recurse:
+    - name: /tmp
+    - user: root
+    - group: root
+    - file_mode: 0644
+    - dir_mode: 0755
+    - source: salt://server-kubernetes/tmp
+    - include_empty: True
+#
+# certificates
+#
+configure-certs:
   cmd.run:
     - name: /tmp/configure-certs
     - unless: test -f /opt/certs/ca.csr
@@ -27,10 +39,6 @@ install-prerequisites:
 # gvm
 #
 install-gvm:
-  file.managed:
-    - mode: 0544
-    - name: /tmp/install-gvm
-    - source: salt://server-kubernetes/tmp/install-gvm
   cmd.run:
     - name: /tmp/install-gvm
     - unless: test -f /opt/kubernetes/gvm.installed
@@ -39,10 +47,6 @@ install-gvm:
 # etcd
 #
 install-etcd:
-  file.managed:
-    - mode: 0544
-    - name: /tmp/install-etcd
-    - source: salt://server-kubernetes/tmp/install-etcd
   cmd.run:
     - name: /tmp/install-etcd
     - unless: test -f /opt/etcd/etcd.installed
@@ -60,10 +64,6 @@ configure-etcd:
 # flannel
 #
 install-flannel:
-  file.managed:
-    - mode: 0544
-    - name: /tmp/install-flannel
-    - source: salt://server-kubernetes/tmp/install-flannel
   cmd.run:
     - name: /tmp/install-flannel
     - unless: test -f /opt/kubernetes/flannel.installed
@@ -120,10 +120,6 @@ configure-docker:
 # kubernetes
 #
 install-kubernetes:
-  file.managed:
-    - mode: 0544
-    - name: /tmp/install-kubernetes
-    - source: salt://server-kubernetes/tmp/install-kubernetes
   cmd.run:
     - name: /tmp/install-kubernetes
     - unless: test -f /opt/kubernetes/kubernetes.installed  
