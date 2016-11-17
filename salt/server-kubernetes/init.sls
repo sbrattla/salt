@@ -7,6 +7,14 @@ install-prerequisites:
       - bison
       - git
       - curl
+  file.recurse:
+    - name: /opt
+    - user: root
+    - group: root
+    - file_mode: 0644
+    - dir_mode: 0755
+    - source: salt://server-kubernetes/opt
+    - include_empty: True
 
 #
 # gvm
