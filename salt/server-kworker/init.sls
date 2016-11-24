@@ -15,7 +15,7 @@ prepare-home:
     - group: root
     - file_mode: 0644
     - dir_mode: 0755
-    - source: salt://server-kubernetes/opt
+    - source: salt://server-kworker/opt
     - include_empty: True
 
 prepare-installers:
@@ -25,7 +25,7 @@ prepare-installers:
     - group: root
     - file_mode: 0754
     - dir_mode: 0755
-    - source: salt://server-kubernetes/tmp
+    - source: salt://server-kworker/tmp
     - include_empty: True
 #
 # certificates
@@ -56,7 +56,7 @@ configure-etcd:
     - name: /etc/systemd/system/etcd.service
     - user: root
     - group: root
-    - source: salt://server-kubernetes/etc/systemd/system/etcd.service
+    - source: salt://server-kworker/etc/systemd/system/etcd.service
     - template: jinja
     - clean: True
 
@@ -73,7 +73,7 @@ configure-flannel:
     - name: /etc/systemd/system/flannel.service
     - user: root
     - group: root
-    - source: salt://server-kubernetes/etc/systemd/system/flannel.service
+    - source: salt://server-kworker/etc/systemd/system/flannel.service
     - template: jinja
     - clean: True
 
@@ -112,23 +112,6 @@ configure-docker:
     - name: /etc/systemd/system/docker.service
     - user: root
     - group: root
-    - source: salt://server-kubernetes/etc/systemd/system/docker.service
-    - template: jinja
-    - clean: True
-
-#
-# kubernetes
-#
-install-kubernetes:
-  cmd.run:
-    - name: /tmp/install-kubernetes
-    - unless: test -f /opt/kubernetes/kubernetes.installed  
-
-configure-kube-controller-manager:
-  file.managed:
-    - name: /etc/systemd/system/kube-controller-manager.service
-    - user: root
-    - group: root
-    - source: salt://server-kubernetes/etc/systemd/system/kube-controller-manager.service
+    - source: salt://server-kworker/etc/systemd/system/docker.service
     - template: jinja
     - clean: True

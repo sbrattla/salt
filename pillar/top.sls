@@ -1,10 +1,12 @@
 base:
-  'kubernetes-alpha':
-    - kubernetes.kubernetes
-    - kubernetes.kubernetes-alpha
-  'kubernetes-bravo':
-    - kubernetes.kubernetes
-    - kubernetes.kubernetes-bravo
-  'kubernetes-charlie':
-    - kubernetes.kubernetes
-    - kubernetes.kubernetes-charlie
+  'kmaster':
+    - kmaster.kmaster
+  'kworker-alpha':
+    - kworker.kworker
+    - kworker.kworker-alpha
+  'kworker-bravo':
+    - kworker.kworker
+    - kworker.kworker-bravo
+  'kworker-charlie':
+    - kworker.kworker
+    - kworker.kworker-charlie

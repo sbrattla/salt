@@ -1,4 +1,9 @@
 base:
-  '*kubernetes*':
+  '*kworker*':
     - server-generic
-    - server-kubernetes
+    - server-kgeneric
+    - server-kworker
+  '*kmaster*':
+    - server-generic
+    - server-kgeneric
+    - server-kmaster
