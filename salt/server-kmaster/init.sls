@@ -16,3 +16,11 @@ configure-kube-apiserver:
     - template: jinja
     - clean: True
 
+configure-kube-scheduler:
+  file.managed:
+    - name: /etc/systemd/system/kube-scheduler.service
+    - user: root
+    - group: root
+    - source: salt://server-kmaster/etc/systemd/system/kube-scheduler.service
+    - template: jinja
+    - clean: True

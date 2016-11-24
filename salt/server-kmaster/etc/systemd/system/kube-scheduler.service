@@ -1,0 +1,12 @@
+[Unit]
+Description=Kubernetes Scheduler
+Documentation=http://kubernetes.io/docs/admin/kube-scheduler/
+[Service]
+ExecStart=/opt/kubernetes/bin/kube-scheduler \
+  --master=http://127.0.0.1:8080 \
+  --leader-elect=true \
+  --v=2
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target
