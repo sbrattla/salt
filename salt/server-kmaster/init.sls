@@ -3,6 +3,6 @@ configure-kube-controller-manager:
     - name: /etc/systemd/system/kube-controller-manager.service
     - user: root
     - group: root
-    - source: salt://server-kgeneric/etc/systemd/system/kube-controller-manager.service
+    - source: salt://server-kmaster/etc/systemd/system/kube-controller-manager.service
     - template: jinja
     - clean: True
