@@ -6,4 +6,3 @@ base:
   '*kmaster*':
     - server-generic
     - server-kgeneric
-    - server-kmaster
