@@ -93,3 +93,15 @@ configure-docker:
     - source: salt://server-kworker/etc/systemd/system/docker.service
     - template: jinja
     - clean: True
+
+#
+# kubelet
+#
+configure-kubelet:
+  file.managed:
+    - name: /etc/systemd/system/kubelet.service
+    - user: root
+    - group: root
+    - source: salt://server-kworker/etc/systemd/system/kubelet.service
+    - template: jinja
+    - clean: True
