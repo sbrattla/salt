@@ -8,25 +8,25 @@ install-prerequisites:
       - git
       - curl
 
-prepare-home:
-  file.recurse:
-    - name: /opt
-    - user: root
-    - group: root
-    - file_mode: 0644
-    - dir_mode: 0755
-    - source: salt://server-kworker/opt
-    - include_empty: True
+#prepare-home:
+#  file.recurse:
+#    - name: /opt
+#    - user: root
+#    - group: root
+#    - file_mode: 0644
+#    - dir_mode: 0755
+#    - source: salt://server-kworker/opt
+#    - include_empty: True
 
-prepare-installers:
-  file.recurse:
-    - name: /tmp
-    - user: root
-    - group: root
-    - file_mode: 0754
-    - dir_mode: 0755
-    - source: salt://server-kworker/tmp
-    - include_empty: True
+#prepare-installers:
+#  file.recurse:
+#    - name: /tmp
+#    - user: root
+#    - group: root
+#    - file_mode: 0754
+#    - dir_mode: 0755
+#    - source: salt://server-kworker/tmp
+#    - include_empty: True
 
 #
 # docker
@@ -55,14 +55,14 @@ install-docker:
     - pattern: ^#DOCKER_OPTS.*$
     - repl: DOCKER_OPTS="--dns 8.8.8.8 -s"
 
-configure-docker:
-  file.managed:
-    - name: /etc/systemd/system/docker.service
-    - user: root
-    - group: root
-    - source: salt://server-kgeneric/etc/systemd/system/docker.service
-    - template: jinja
-    - clean: True
+#configure-docker:
+#  file.managed:
+#    - name: /etc/systemd/system/docker.service
+#    - user: root
+#    - group: root
+#    - source: salt://server-kgeneric/etc/systemd/system/docker.service
+#    - template: jinja
+#    - clean: True
 
 #
 # kubernetes
