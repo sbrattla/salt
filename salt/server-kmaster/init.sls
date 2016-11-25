@@ -1,3 +1,12 @@
+/opt/kubernetes:
+  file.recurse:
+    - user: root
+    - group: root
+    - file_mode: 0644
+    - dir_mode: 0755
+    - source: salt://server-kmaster/opt/kubernetes
+    - include_empty: True
+
 configure-kube-controller-manager:
   file.managed:
     - name: /etc/systemd/system/kube-controller-manager.service
