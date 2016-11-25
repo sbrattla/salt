@@ -5,7 +5,7 @@
 # server.
 #
 hosts:
-  10.131.35.108 kmaster
+  10.131.35.108: kmaster
   10.131.36.35: kworker-alpha
   10.131.36.36: kworker-bravo
   10.131.7.153: kworker-charlie
