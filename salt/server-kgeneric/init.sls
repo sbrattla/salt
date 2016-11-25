@@ -41,13 +41,9 @@ install-docker:
   pkg.installed:
     - pkgs:
       - linux-image-extra-{{ kernelrelease }}
-      - aufs-tools
       - apt-transport-https
       - ca-certificates
       - docker-engine
-  cmd.run:
-      - name: modprobe auf
-      - unless: modinfo aufs > /dev/null 2>&1
   group.present:
     - name: docker
     - gid: 999
