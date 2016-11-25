@@ -3,7 +3,7 @@ Description=Kubernetes Kubelet
 Documentation=https://github.com/kubernetes/kubernetes
 
 [Service]
-ExecStartPre=/usr/bin/mkdir -p /etc/kubernetes/manifests
+ExecStartPre=/bin/mkdir -p /etc/kubernetes/manifests
 ExecStart=/opt/kubernetes/bin/kubelet \
   --api-servers=http://kmaster:8080 \
   --allow-privileged=true \
