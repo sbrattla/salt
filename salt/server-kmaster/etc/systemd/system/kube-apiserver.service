@@ -6,9 +6,9 @@ After=etcd.service
 [Service]
 ExecStart=/opt/kubernetes/bin/kube-apiserver \
   --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota \
-  --bind-address=0.0.0.0 \
+  --bind-address={{pillar['ip']}} \
   --secure-port=8443 \
-  --insecure-bind-address=127.0.0.1 \
+  --insecure-bind-address={{pillar['ip']}} \
   --insecure-port=8080 \
   --etcd-servers={{pillar['etcd-endpoints']}} \
   --token-auth-file=/opt/kubernetes/tokens.csv \
