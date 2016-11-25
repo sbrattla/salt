@@ -22,3 +22,8 @@ install-kubernetes:
   cmd.run:
     - name: /tmp/install-kubernetes
     - unless: test -f /opt/kubernetes/kubernetes.installed
+
+configure-kubectl:
+  file.symlink:
+    - name: /usr/local/bin/kubectl
+    - target: /opt/kubernetes/bin/kubectl
