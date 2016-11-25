@@ -1,2 +1,2 @@
 hostname: kmaster
-etcd-endpoints: http://kubernetes-alpha:2379, http://kubernetes-bravo:2379, http://kubernetes-charlie:2379
+etcd-endpoints: http://kworker-alpha:2379, http://kworker-bravo:2379, http://kworker-charlie:2379
