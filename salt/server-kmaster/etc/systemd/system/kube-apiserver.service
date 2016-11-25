@@ -5,7 +5,7 @@ After=network.target
 After=etcd.service
 [Service]
 ExecStart=/opt/kubernetes/bin/kube-apiserver \
-  --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota \
+  --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ResourceQuota \
   --bind-address={{pillar['ip']}} \
   --secure-port=8443 \
   --insecure-bind-address={{pillar['ip']}} \
