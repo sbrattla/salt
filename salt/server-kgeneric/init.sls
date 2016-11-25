@@ -1,3 +1,5 @@
+{% set kernelrelease = salt['grains.get']('kernelrelease') -%}
+
 install-prerequisites:
   pkg.installed:
     - pkgs:
