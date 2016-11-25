@@ -63,7 +63,7 @@ configure-docker:
     - name: /etc/systemd/system/docker.service
     - user: root
     - group: root
-    - source: salt://server-generic/etc/systemd/system/docker.service
+    - source: salt://server-kgeneric/etc/systemd/system/docker.service
     - template: jinja
     - clean: True
 
