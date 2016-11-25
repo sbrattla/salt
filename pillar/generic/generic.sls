@@ -6,6 +6,6 @@
 #
 hosts:
   10.131.35.108: kmaster
-  10.131.36.35: kworker-alpha
+  10.131.31.137: kworker-alpha
   10.131.34.23: kworker-bravo
   10.131.7.153: kworker-charlie
