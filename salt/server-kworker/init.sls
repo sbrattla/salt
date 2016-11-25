@@ -75,7 +75,7 @@ install-docker:
   pkg.installed:
     - skip_verify: True
     - pkgs:
-      - linux-image-extra-{{ kernelrelease }}
+      - linux-image-extra-{{kernelrelease}}
       - apt-transport-https
       - ca-certificates
       - docker-engine
