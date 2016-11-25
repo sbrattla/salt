@@ -27,13 +27,6 @@ prepare-installers:
     - dir_mode: 0755
     - source: salt://server-kworker/tmp
     - include_empty: True
-#
-# certificates
-#
-configure-certs:
-  cmd.run:
-    - name: /tmp/configure-certs
-    - unless: test -f /opt/certs/ca.csr
 
 #
 # gvm
@@ -90,7 +83,6 @@ install-docker:
   pkg.installed:
     - pkgs:
       - linux-image-extra-{{ kernelrelease }}
-      - aufs-tools
       - apt-transport-https
       - ca-certificates
       - docker-engine
@@ -102,10 +94,6 @@ install-docker:
     - gid: 999
     - members:
       - administrator
-  file.replace:
-    - name: /etc/default/docker
-    - pattern: ^#DOCKER_OPTS.*$
-    - repl: DOCKER_OPTS="--dns 8.8.8.8 -s aufs"
 
 configure-docker:
   file.managed:
