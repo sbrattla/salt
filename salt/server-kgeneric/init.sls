@@ -39,6 +39,7 @@ install-docker:
     - keyid: 2C52609D
     - keyserver: p80.pool.sks-keyservers.net
   pkg.installed:
+    - skip_verify: True
     - pkgs:
       - linux-image-extra-{{ kernelrelease }}
       - apt-transport-https
@@ -52,7 +53,7 @@ install-docker:
   file.replace:
     - name: /etc/default/docker
     - pattern: ^#DOCKER_OPTS.*$
-    - repl: DOCKER_OPTS="--dns 8.8.8.8 -s aufs"
+    - repl: DOCKER_OPTS="--dns 8.8.8.8 -s"
 
 configure-docker:
   file.managed:
