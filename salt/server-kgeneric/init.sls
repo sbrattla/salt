@@ -16,7 +16,7 @@ install-kubernetes:
     - name: /tmp/install-kubernetes
     - user: root
     - group: root
-    - file_mode: 0754
+    - file_mode: 0544
     - dir_mode: 0755
     - source: salt://server-kgeneric/tmp/install-kubernetes
   cmd.run:
