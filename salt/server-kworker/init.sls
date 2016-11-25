@@ -1,13 +1,5 @@
 {% set kernelrelease = salt['grains.get']('kernelrelease') -%}
 
-install-prerequisites:
-  pkg.installed:
-    - pkgs:
-      - build-essential
-      - bison
-      - git
-      - curl
-
 prepare-home:
   file.recurse:
     - name: /opt
