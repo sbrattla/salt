@@ -1,5 +1,3 @@
-{% set kernelrelease = salt['grains.get']('kernelrelease') -%}
-
 prepare-home:
   file.recurse:
     - name: /opt
@@ -59,38 +57,6 @@ configure-flannel:
     - user: root
     - group: root
     - source: salt://server-kworker/etc/systemd/system/flannel.service
-    - template: jinja
-    - clean: True
-
-#
-# docker
-#
-install-docker:
-  pkgrepo.managed:
-    - humanname: Docker Engine Repository
-    - name: "deb https://apt.dockerproject.org/repo ubuntu-xenial main"
-    - file: /etc/apt/sources.list.d/docker.list
-    - keyid: 2C52609D
-    - keyserver: p80.pool.sks-keyservers.net
-  pkg.installed:
-    - skip_verify: True
-    - pkgs:
-      - linux-image-extra-{{kernelrelease}}
-      - apt-transport-https
-      - ca-certificates
-      - docker-engine
-  group.present:
-    - name: docker
-    - gid: 999
-    - members:
-      - administrator
-
-configure-docker:
-  file.managed:
-    - name: /etc/systemd/system/docker.service
-    - user: root
-    - group: root
-    - source: salt://server-kworker/etc/systemd/system/docker.service
     - template: jinja
     - clean: True
 
