@@ -1,4 +1,0 @@
-go get -u github.com/cloudflare/cfssl/cmd/...
-cd /opt/certs
-$GOPATH/bin/cfssl gencert -initca ca-csr.json | $GOPATH/bin/cfssljson -bare ca -
-$GOPATH/bin/cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json client.json | $GOPATH/bin/cfssljson -bare client

@@ -1,8 +1,0 @@
-mkdir -p /opt/kubernetes/bin
-cd /opt/kubernetes
-curl -L https://github.com/kubernetes/kubernetes/releases/download/v1.3.5/kubernetes.tar.gz -o kubernetes.tar.gz
-tar xzvf kubernetes.tar.gz kubernetes/server/kubernetes-server-linux-amd64.tar.gz --strip-components=2
-tar xzvf kubernetes-server-linux-amd64.tar.gz -C bin --strip-components=3
-ln -s /opt/kubernetes/bin/kube-controller-manager /usr/local/bin/kube-controller-manager; chmod u+x /usr/local/bin/kube-controller-manager
-date +%s > /opt/kubernetes/kubernetes.installed
-rm /opt/kubernetes/*.tar.gz

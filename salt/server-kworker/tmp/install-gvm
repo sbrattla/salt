@@ -1,7 +1,0 @@
-bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-source /root/.gvm/scripts/gvm
-gvm install go1.7 -B
-echo "g01.7" > /opt/kubernetes/gvm.installed
-cd /opt/go
-gvm use go1.7
-export GOPATH=`pwd`

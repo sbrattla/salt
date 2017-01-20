@@ -1,7 +1,0 @@
-mkdir -p /opt/flannel/bin
-cd /opt/flannel
-curl -L https://github.com/coreos/flannel/releases/download/v0.5.5/flannel-0.5.5-linux-amd64.tar.gz -o flannel-0.5.5-linux-amd64.tar.gz
-tar xzvf flannel-0.5.5-linux-amd64.tar.gz -C bin --strip-components=1
-ln -s /opt/flannel/bin/flanneld /usr/local/bin/flanneld; chmod u+x /usr/local/bin/flanneld
-date +%s > /opt/flannel/flannel.installed
-rm /opt/flannel/*.gz
