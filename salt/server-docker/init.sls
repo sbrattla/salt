@@ -20,7 +20,7 @@ docker:
 
 docker-compose:
   cmd.run:
-    - name: 'curl -L https://github.com/docker/compose/releases/download/1.8.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && chmod +x /usr/lo$
+    - name: 'curl -L https://github.com/docker/compose/releases/download/1.8.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
     - creates: /usr/local/bin/docker-compose
 
 /usr/local/sbin/docker-gc:
