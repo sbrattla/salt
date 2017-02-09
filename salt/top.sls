@@ -1,4 +1,5 @@
 base:
-  '*docker*':
+  '*':
     - server-generic
+  '*docker*':
     - server-docker

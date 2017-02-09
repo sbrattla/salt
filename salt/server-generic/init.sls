@@ -107,7 +107,7 @@ lsof:
     - mode: 0644
     - source: salt://server-generic/etc/salt/minion
 
-# Add sebastian user
+# Add administrator user
 administrator:
   user.present:
     - uid: 1000
