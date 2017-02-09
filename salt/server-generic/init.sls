@@ -112,7 +112,7 @@ administrator:
   user.present:
     - uid: 1000
     - fullname: Administrator
-    - password: $1$K1AdZDQi$B2TdOmQJ3SGpe2uGEQskX1
+    - password: $1$xyz$vEGZQdEO58lLqJO2eiEPD/
     - shell: /bin/bash
     - home: /home/administrator
 
