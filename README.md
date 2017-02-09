@@ -1,4 +1,4 @@
-# Docker Host Configuration
+# Server Configurations
 
 This repository holds server configurations. The configurations are written using SALT Stack. 
 
