@@ -54,6 +54,11 @@ lsof:
     - pkgs:
       - lsof
 
+nfs:
+  pkg.installed:
+    - pkgs:
+      - nfs-common
+
 # Configure timezone
 /usr/local/bin/updateconfig:
   file.managed:
