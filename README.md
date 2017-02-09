@@ -14,7 +14,7 @@ cd /tmp && \
   apt-get install -y software-properties-common && \
   apt-get install -y salt-minion && \
   cd /var/local && \
-  git clone http://cphbitbucket-01:7990/scm/cm/docker-host.git salt && \
+  git clone https://github.com/sbrattla/salt.git salt && \
   ln -s /var/local/salt/salt /srv/salt && \
   ln -s /var/local/salt/pillar /srv/pillar && \
   salt-call --local state.highstate && \
