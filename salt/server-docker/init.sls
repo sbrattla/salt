@@ -3,20 +3,16 @@
 docker:
   pkgrepo.managed:
     - humanname: Docker Engine Repository
-    - name: "deb https://apt.dockerproject.org/repo ubuntu-xenial main"
+    - name: "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
     - file: /etc/apt/sources.list.d/docker.list
-    - keyid: 58118E89F3A912897C070ADBF76221572C52609D
-    - keyserver: hkp://p80.pool.sks-keyservers.net:80
+    - key_url: https://download.docker.com/linux/ubuntu/gpg
   pkg.installed:
     - pkgs:
-      - linux-image-extra-{{kernelrelease}}
-      - apt-transport-https
-      - ca-certificates
-      - docker-engine
+      - docker-ce
   group.present:
     - gid: 999
     - members:
-      - administrator
+      - sebastian
 
 docker-compose:
   cmd.run:
