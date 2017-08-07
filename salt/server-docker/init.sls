@@ -12,7 +12,7 @@ docker:
   group.present:
     - gid: 999
     - members:
-      - sebastian
+      - administrator
 
 docker-compose:
   cmd.run:
