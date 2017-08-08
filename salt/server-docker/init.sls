@@ -19,6 +19,11 @@ docker-compose:
     - name: 'curl -L https://github.com/docker/compose/releases/download/1.8.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose'
     - creates: /usr/local/bin/docker-compose
 
+sks-ctl:
+  cmd.run:
+    - cwd: /usr/local/bin
+    - name: 'wget https://s3.amazonaws.com/get-skopos/edge/linux/sks-ctl && chmod 0755 /usr/local/bin/sks-ctl'
+  
 /usr/local/sbin/docker-gc:
   file.managed:
     - user: root
