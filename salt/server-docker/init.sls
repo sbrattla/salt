@@ -30,3 +30,12 @@ sks-ctl:
     - group: root
     - mode: 0755
     - source: salt://server-docker/usr/local/sbin/docker-gc
+
+/etc/systemd/system/docker.service.d/overrides.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 0755
+    - makedirs: True
+    - source: salt://server-docker/etc/systemd/system/docker.service.d/overrides.conf
+
