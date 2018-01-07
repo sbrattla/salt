@@ -1,5 +1,13 @@
 {% set kernelrelease = salt['grains.get']('kernelrelease') -%}
 
+docker-dependencies:
+  pkg.installed:
+    - pkgs:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+
 docker:
   pkgrepo.managed:
     - humanname: Docker Engine Repository
@@ -13,11 +21,6 @@ docker:
     - gid: 999
     - members:
       - administrator
-
-docker-compose:
-  cmd.run:
-    - name: 'curl -L https://github.com/docker/compose/releases/download/1.8.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose'
-    - creates: /usr/local/bin/docker-compose
 
 sks-ctl:
   cmd.run:
