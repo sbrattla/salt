@@ -21,11 +21,6 @@ docker:
     - gid: 999
     - members:
       - administrator
-
-sks-ctl:
-  cmd.run:
-    - cwd: /usr/local/bin
-    - name: 'wget https://s3.amazonaws.com/get-skopos/edge/linux/sks-ctl && chmod 0755 /usr/local/bin/sks-ctl'
   
 /usr/local/sbin/docker-gc:
   file.managed:
@@ -41,4 +36,3 @@ sks-ctl:
     - mode: 0755
     - makedirs: True
     - source: salt://server-docker/etc/systemd/system/docker.service.d/overrides.conf
-
