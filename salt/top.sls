@@ -6,5 +6,6 @@ base:
   '*nfs*':
     - server-nfs
   '*docker*':
+    - server-docker
   '*swarm*':
     - server-docker
