@@ -37,7 +37,7 @@ docker:
     - makedirs: True
     - source: salt://server-docker/etc/systemd/system/docker.service.d/overrides.conf
 
-deploy:
+deployer:
   user.present:
     - uid: 1200
     - fullname: Deployer
