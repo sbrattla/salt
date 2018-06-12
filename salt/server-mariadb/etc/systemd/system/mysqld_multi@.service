@@ -1,0 +1,11 @@
+[Unit]
+Description= mysqld_multi_service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mysqld_multi start %I
+ExecStop=/usr/bin/mysqld_multi stop %I
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

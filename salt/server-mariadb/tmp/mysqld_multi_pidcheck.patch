@@ -1,0 +1,29 @@
+--- /usr/bin/mysqld_multi.orig	2011-09-28 09:50:38.000000000 +0200
++++ /usr/bin/mysqld_multi	2011-09-28 10:15:06.000000000 +0200
+@@ -319,6 +319,13 @@
+         $options[$j]= quote_shell_word($options[$j]);
+         $tmp.= " $options[$j]";
+       }
++      elsif ("--pid-file=" eq substr($options[$j], 0, 11))
++      {
++	$pidfile= $options[$j];
++	$pidfile =~ s/^--pid-file=//;
++	$options[$j]= quote_shell_word($options[$j]);
++        $tmp.= " $options[$j]";
++      }
+       else
+       {
+ 	$options[$j]= quote_shell_word($options[$j]);
+@@ -351,7 +358,11 @@
+       $curdir=getcwd();
+       chdir($basedir) or die "Can't change to datadir $basedir";
+     }
+-    system($com);
++    if (-e $pidfile) {
++      print "pid-file $pidfile exists. Skipping.\n";
++    } else {
++      system($com);
++    }
+     if ($basedir_found)
+     {
+       chdir($curdir) or die "Can't change back to original dir $curdir";

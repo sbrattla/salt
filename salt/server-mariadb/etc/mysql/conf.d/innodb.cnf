@@ -1,0 +1,46 @@
+[mysqld]
+
+# Log buffer flushing behaviour.
+# http://dev.mysql.com/doc/refman/4.1/en/innodb-parameters.html#sysvar_innodb_flush_log_at_trx_commit
+innodb_flush_log_at_trx_commit = 2
+
+# InnoDB buffer pool should be 70% - 80% of available memory on a dedicated MariaDB server.
+# http://www.percona.com/blog/2007/11/01/innodb-performance-optimization-basics/
+innodb_buffer_pool_size = 8G
+
+# Disable for better performance.
+# http://dev.mysql.com/doc/refman/5.1/en/innodb-parameters.html#sysvar_innodb_stats_on_metadata
+innodb_stats_on_metadata = 0
+
+# Configure the method used to flush data.
+# http://dev.mysql.com/doc/refman/5.1/en/innodb-parameters.html#sysvar_innodb_flush_method
+innodb_flush_method = O_DIRECT
+
+# Configure concurrency.
+# http://dev.mysql.com/doc/refman/5.1/en/innodb-parameters.html#sysvar_innodb_thread_concurrency
+innodb_thread_concurrency = 8
+innodb_write_io_threads = 4
+innodb_read_io_threads = 4
+
+# Configure upper limit on IO activity.
+# http://dev.mysql.com/doc/refman/5.1/en/innodb-parameters.html#sysvar_innodb_io_capacity
+innodb_io_capacity = 300
+
+# Configure (in percent) the amount of allowed dirty pages.
+# http://dev.mysql.com/doc/refman/5.1/en/innodb-parameters.html#sysvar_innodb_max_dirty_pages_pct
+innodb_max_dirty_pages_pct = 90
+
+# Store data and indexes for each table in a separate file.
+innodb_file_per_table = 1
+
+# Sensible values range from 1 MB to 8 MB
+# http://www.mysqlab.net/knowledge/kb/detail/topic/innodb/id/6553
+innodb_log_buffer_size = 4M
+
+# Use one file per table. This allows for better space reclaim on cleanup.
+#http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_file_per_table
+innodb_file_per_table = 1
+
+# Various settings 
+innodb_open_files = 400
+innodb_io_capacity = 400

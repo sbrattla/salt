@@ -1,0 +1,3 @@
+Package: *
+Pin: origin mirror.one.com
+Pin-Priority: 1000
