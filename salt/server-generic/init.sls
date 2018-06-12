@@ -29,6 +29,7 @@ duplicity:
     - pkgs:
       - duplicity
       - ncftp
+      - lftp
 
 wget:
   pkg.installed:
