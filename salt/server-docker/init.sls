@@ -36,3 +36,10 @@ docker:
     - mode: 0755
     - makedirs: True
     - source: salt://server-docker/etc/systemd/system/docker.service.d/overrides.conf
+
+deploy:
+  user.present:
+    - uid: 1200
+    - fullname: Deployer
+    - shell: /bin/bash
+    - home: /home/deployer
