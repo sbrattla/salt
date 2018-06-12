@@ -12,10 +12,12 @@ software-properties-common:
     - pkgs:
       - software-properties-common
 
+{% if grains['oscodename'] == 'trusty' %}
 python-software-properties:
   pkg.installed:
     - pkgs:
       - python-software-properties
+{% endif %}
 
 debconf-utils:
   pkg.installed:
