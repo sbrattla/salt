@@ -24,6 +24,12 @@ debconf-utils:
     - pkgs:
       - debconf-utils
 
+duplicity:
+  pkg.installed:
+    - pkgs:
+      - duplicity
+      - ncftp
+
 wget:
   pkg.installed:
     - pkgs:
