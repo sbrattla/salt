@@ -122,7 +122,7 @@ htop:
 # Add administrator user
 administrator:
   user.present:
-    - uid: 1000
+    - uid: 1100
     - fullname: Administrator
     - password: $1$xyz$vEGZQdEO58lLqJO2eiEPD/
     - shell: /bin/bash
